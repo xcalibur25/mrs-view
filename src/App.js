@@ -25,7 +25,7 @@ function Login() {
         try {
           console.log('Username: ',username)
           console.log('Password: ',password)
-            const response = await axios.post('http://52.3.18.150:5002/login', { username, password });
+            const response = await axios.post('https://52.3.18.150:5002/login', { username, password });
             localStorage.setItem('token', response.data.token);
             window.location.href = '/search';
         } catch (err) {
@@ -51,7 +51,7 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://52.3.18.150:5002/register', { username, password });
+            await axios.post('https://52.3.18.150:5002/register', { username, password });
             alert('Registration successful');
             window.location.href = '/';
         } catch (err) {
@@ -79,7 +79,7 @@ function Search() {
         try {
             const token = localStorage.getItem('token');
             console.log('token===>', token)
-            const response = await axios.post('http://52.3.18.150:5002/recommend', { movie }, {
+            const response = await axios.post('https://52.3.18.150:5002/recommend', { movie }, {
                 headers: { Authorization: token },
             });
             console.log(response.data);
